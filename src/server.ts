@@ -3,7 +3,8 @@ import cors from 'cors'
 import morgan from 'morgan'
 import { createExpressMiddleware } from '@trpc/server/adapters/express'
 import { createContext } from './trpc/context'
-import { trpcRoutes } from './routes';
+import { appRouter } from './routes'
+
 
 export const server = express();
 
@@ -13,11 +14,11 @@ server.use(express.json());
 server.use(morgan('dev'));
 
 server.use('/trpc', createExpressMiddleware({
-  router: trpcRoutes,
+  router: appRouter,
   createContext
 }));
 
 
-
+export type AppRouter = typeof appRouter;
 
 

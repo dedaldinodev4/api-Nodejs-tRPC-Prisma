@@ -1,6 +1,9 @@
-import { trcpServer } from "../trpc";
-import { Prisma } from "@prisma/client";
-import { prismaClient } from "../trpc/prisma";
+import { trpcRoutes } from "../trpc";
+import { heroRoutes } from "./hero.routes";
 
 
-export const trpcRoutes = trcpServer.router({});
+export const appRouter = trpcRoutes({
+  hero: heroRoutes,
+})
+
+export type AppRouter = typeof appRouter;

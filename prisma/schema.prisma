@@ -10,9 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Post {
+model Hero {
   id          String  @id @default(uuid())
   name        String
   description String
   image       String?
+
+  @@map("_heroes")
 }
